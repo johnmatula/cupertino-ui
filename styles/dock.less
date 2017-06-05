@@ -1,0 +1,32 @@
+// Dock
+
+// dock toggles
+.atom-dock-toggle-button {
+	color: @text-color-subtle;
+
+	&.left,
+	&.right {
+		height: 34px;
+		width: 16px;
+	}
+
+	&.top,
+	&.bottom {
+		height: 16px;
+		width: 34px;
+	}
+
+	&.left,
+	&.top,
+	&.right,
+	&.bottom {
+		.atom-dock-toggle-button-inner {
+			border: 0;
+			border-radius: 4px;
+			box-shadow: 0 0 0 1px @base-border-color;
+			height: 30px;
+			margin: 2px;
+			width: 30px;
+		}
+	}
+}

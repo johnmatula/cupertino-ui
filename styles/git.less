@@ -3,10 +3,124 @@
 // -------------------
 
 // Used to color git status
-
+/*
 .status          { color: @text-color; }
 .status-added    { color: @text-color-success; } // green
 .status-ignored  { color: @text-color-subtle; }  // faded
 .status-modified { color: @text-color-warning; } // orange
 .status-removed  { color: @text-color-error; }   // red
 .status-renamed  { color: @text-color-info; }    // blue
+*/
+
+.icon {
+	&.icon-diff-ignored,
+	&.icon-diff-added,
+	&.icon-diff-modified,
+	&.icon-diff-removed,
+	&.icon-diff-renamed {
+		&::before {
+			align-items: center;
+			display: inline-flex;
+			font-size: 16px;
+			height: 12px;
+			justify-content: center;
+			line-height: 16px;
+			overflow: hidden;
+			text-align: center;
+			width: 10px;
+		}
+	}
+}
+
+
+.status-added,
+.status-ignored,
+.status-modified,
+.status-removed,
+.status-renamed {
+	color: @text-color;
+
+	&.selected {
+		color: @text-color-selected;
+	}
+
+	.name::after {
+		-webkit-font-smoothing: antialiased;
+		align-items: center;
+		display: flex;
+		font-family: 'Octicons Regular';
+		font-size: 16px;
+		height: 12px;
+		justify-content: center;
+		line-height: 16px;
+		margin-top: -6px;
+		overflow: hidden;
+		position: absolute;
+		right: 0px;
+		top: 50%;
+		width: 12px;
+	}
+}
+
+.name::after {
+	.status-added > & {
+		//color: @text-color-success;
+		content: '\f06b';
+	}
+
+	.status-ignored > & {
+		//color: @text-color-ignored;
+		content: '\f099';
+	}
+
+	.status-modified > & {
+		//color: @text-color-warning;
+		content: '\f06d';
+	}
+
+	.status-removed > & {
+		//color: @text-color-error;
+		content: '\f06c';
+	}
+
+	.status-renamed > & {
+		//color: @text-color-info;
+		content: '\f06e';
+	}
+}
+
+// Github view
+.github-CommitView-remaining-characters {
+	font-feature-settings: 'tnum' on;
+}
+
+
+// Popup thing --------------
+.tooltip.github-StatusBarTileController-tooltipMenu {
+
+	.tooltip-inner {
+		background: @overlay-background-color;
+		border: 0;
+		border-radius: 5px;
+		box-shadow: @shadow-main-popover;
+	}
+
+	.tooltip-arrow {
+		border-radius: 5px;
+		display: block;
+	}
+}
+
+.github-StatusBarTileController-tooltipMenu.top .tooltip-arrow.tooltip-arrow {
+	background: @overlay-background-color;
+	border: 0;
+	border-radius: 0;
+	bottom: 4px;
+	box-shadow: -1px 1px 0 0 rgba(0, 0, 0, .12), -5px 5px 14px -4px rgba(0, 0, 0, .64);
+	height: 12px;
+	width: 12px;
+}
+
+.github-StatusBarTileController > .inline-block:hover {
+	text-decoration: none;
+}

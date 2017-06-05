@@ -10,85 +10,91 @@
 // Try to edit some of the values below to see your theme change.
 // A good start is to change the color of the `@base-background-color` variable.
 
+/* put in notifications.less */
+
+//notification-show 0.16s cubic-bezier(0.175, 0.885, 0.32, 1.27499)
+
+/*******************/
 
 // Text Colors
-@text-color:           hsl(0,0%,66%);
-@text-color-subtle:    hsl(0,0%,50%);
-@text-color-highlight: hsl(0,0%,94%);
-@text-color-selected:  hsl(0,0%,100%);
+@text-color:           							rgb(33, 33, 33);
+@text-color-subtle:    							rgb(128, 128, 128);
+@text-color-highlight: 							rgb(33, 33, 33);
+@text-color-selected:  							rgb(255, 255, 255);
 
-@text-color-info:    hsl(219,  79%, 66%);
-@text-color-success: hsl(140,  44%, 62%);
-@text-color-warning: hsl( 36,  60%, 72%);
-@text-color-error:   hsl(  9, 100%, 64%);
+@text-color-info:    								rgb(33, 33, 33);
+@text-color-success: 								darken(@background-color-success, 10%);
+@text-color-warning: 								darken(@background-color-warning, 5%);
+@text-color-error:   								darken(@background-color-error, 10%);
+
 
 // Background colors
-@background-color-info:    hsl(208, 100%, 50%);
-@background-color-success: hsl(160,  70%, 36%);
-@background-color-warning: hsl(32,   60%, 50%);
-@background-color-error:   hsl(0,    70%, 50%);
+@background-color-info:    					rgba(0, 0, 0, .18);
+@background-color-success: 					rgb(76, 217, 100);
+@background-color-warning:					rgb(255, 204, 0);
+@background-color-error:						rgb(255, 59, 48);
 
-@background-color-highlight: lighten(@base-background-color, 5%);
-@background-color-selected:  lighten(@base-background-color, 10%);
-@app-background-color:       darken(@base-background-color, 5%);
+@background-color-highlight: 				rgba(0, 0, 0, .18);
+@background-color-selected:  				rgb(17, 108, 214);
+@app-background-color:       				rgb(184, 184, 184);
 
 // Base colors
-@base-background-color: hsl(222,6%,22%);
-@base-border-color:     darken(@base-background-color, 8%);
+@base-background-color:							rgb(236, 236, 236);
+@base-border-color:    							rgba(0, 0, 0, .18);
 
 // Component colors
-@pane-item-background-color: @base-background-color;
-@pane-item-border-color:     @base-border-color;
+@pane-item-background-color:				@base-background-color;
+@pane-item-border-color:						@base-border-color;
 
-@input-background-color: @app-background-color;
-@input-border-color:     @base-border-color;
+@input-background-color: 						rgb(255, 255, 255);
+@input-border-color:     						@base-border-color;
 
-@tool-panel-background-color: @base-background-color;
-@tool-panel-border-color:     @base-border-color;
+@tool-panel-background-color: 			@base-background-color;
+@tool-panel-border-color:     			@base-border-color;
 
-@inset-panel-background-color: lighten(@base-background-color, 4%);
-@inset-panel-border-color:     @base-border-color;
+@inset-panel-background-color: 			rgba(0, 0, 0, .04); // todo: override tooltips because that shouldn't be using this
+@inset-panel-border-color:     			@base-border-color;
 
-@panel-heading-background-color: lighten(@base-background-color, 4%);
-@panel-heading-border-color:     @base-border-color;
+@panel-heading-background-color:		@base-background-color;
+@panel-heading-border-color:    		@base-border-color;
 
-@overlay-background-color: lighten(@base-background-color, 5%);
-@overlay-border-color:     @base-border-color;
+@overlay-background-color:					rgb(246, 245, 246);
+@overlay-border-color:     					@base-border-color;
 
-@button-background-color:          lighten(@base-background-color, 10%);
-@button-background-color-hover:    lighten(@button-background-color, 12%);
-@button-background-color-selected: @button-background-color-hover;
-@button-border-color:              @base-border-color;
+@button-background-color:        		rgb(255, 255, 255); // G
+@button-background-color-hover:  		rgb(255, 255, 255); // G
+@button-background-color-selected:	rgb(105, 105, 105); // G
+@button-border-color:             	@base-border-color;
 
-@tab-bar-background-color:    @base-background-color;
-@tab-bar-border-color:        @base-border-color;
-@tab-background-color:        @tab-bar-background-color;
-@tab-background-color-active: lighten(@tab-bar-background-color, 10%);
-@tab-border-color:            @base-border-color;
+@tab-bar-background-color:    			@base-background-color; // G
+@tab-bar-border-color:        			@base-border-color; // G
+@tab-background-color:        			rgb(184, 184, 184); // G
+@tab-background-color-active: 			rgb(212, 212, 212); // G
+@tab-border-color:            			rgba(0, 0, 0, .12); // G
 
-@tree-view-background-color: @base-background-color;
-@tree-view-border-color:     @base-border-color;
+@tree-view-background-color:				@base-background-color;
+@tree-view-border-color:						@base-border-color;
 
 // Site colors
-@ui-site-color-1: hsl(208, 100%, 50%); // blue
-@ui-site-color-2: hsl(160,  70%, 42%); // green
-@ui-site-color-3: hsl(32,   60%, 50%); // orange
-@ui-site-color-4: #D831B0;             // pink
-@ui-site-color-5: #EBDD5B;             // yellow
+@ui-site-color-1: 									rgb(90, 200, 250); // blue
+@ui-site-color-2:										rgb(76, 217, 100); // green
+@ui-site-color-3:										rgb(255, 149, 0);  // orange
+@ui-site-color-4:										rgb(255, 45, 85);  // pink
+@ui-site-color-5: 									rgb(255, 204, 0);  // yellow
 
 // Sizes
-@font-size: 12px;
-@input-font-size: 14px;
+@font-size: 13px;
+@input-font-size: 13px;
 
 @disclosure-arrow-size: 12px;
 
 @component-padding: 10px;
 @component-icon-padding: 5px;
 @component-icon-size: 16px;
-@component-line-height: 25px;
+@component-line-height: 20px; // set for buttons/controls; we'll adapt tree
 
-@tab-height: 30px;
+@tab-height: 24px;
 
 // Misc
-@component-border-radius: 2px;
-@font-family: '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+@component-border-radius: 5px;
+@font-family: -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', 'SF UI Text', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;

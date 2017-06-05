@@ -1,0 +1,95 @@
+// Settings
+
+.package-container {
+	.btn.settings:first-child:not(:last-child) {
+		border-radius: @component-border-radius;
+		margin-right: 5px;
+	}
+
+	.btn.uninstall-button:nth-child(n+1):not(:first-child):not(:last-child) {
+		border-bottom-left-radius: @component-border-radius;
+		border-top-left-radius: @component-border-radius;
+	}
+
+	.btn.enablement:nth-child(n+2):not(:first-child):not(:last-child) {
+		border-bottom-right-radius: @component-border-radius;
+		border-top-right-radius: @component-border-radius;
+	}
+}
+
+.settings-view .package-card {
+	font-size: 1em;
+}
+
+.config-menu {
+	a {
+		cursor: default;
+	}
+
+	.btn {
+		font-size: 11px;
+
+		&::before {
+			display: none;
+		}
+	}
+}
+
+.settings-view {
+	.setting-title {
+		font-size: 1em;
+	}
+
+	.setting-description,
+	.c {
+		color: @text-color-subtle;
+		font-size: .85em;
+		padding-top: .25em;
+	}
+
+	.config-menu .nav {
+		& > li:hover > a {
+			background: transparent;
+			color: @text-color;
+		}
+
+		& > li.active > a {
+			background: rgba(0, 0, 0, .15);
+			color: @text-color;
+		}
+	}
+}
+
+// Status indicator
+.btn.status-indicator {
+	box-shadow: none;
+	display: inline-block;
+
+	.btn + & {
+		margin-left: 10px;
+		margin-top: 6px;
+	}
+}
+
+.settings-view .package-card .meta-controls .status-indicator {
+	height: 10px;
+	width: 10px;
+}
+
+.btn-group > .btn:last-child:not(:first-child).status-indicator,
+.btn-group > .dropdown-toggle:not(:first-child).status-indicator {
+	border-radius: 5px;
+}
+
+.deprecation-message {
+	overflow-x: scroll;
+}
+
+.styleguide-sections section > h2 {
+	font-size: 1.54rem;
+}
+
+.styleguide .popover-list atom-text-editor[mini],
+.styleguide .select-list atom-text-editor[mini] {
+	height: auto;
+}

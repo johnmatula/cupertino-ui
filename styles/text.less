@@ -24,10 +24,21 @@
 .highlight-success { .highlight-mixin(@background-color-success); }
 
 .highlight-mixin(@color) {
-  padding: 1px 4px;
-  color: @text-color-highlight;
-  border-radius: @component-border-radius;
-  background-color: @color;
+  color: @text-color-selected;
+	background-color: @color;
+  border-radius: 999px;
+	padding: 1px 6px;
+}
+
+i.icon {
+	display: inline-block;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	font-style: normal;
+	line-height: 1;
+	position: relative;
+	text-align: center;
+	width: 16px;
 }
 
 
@@ -35,6 +46,6 @@
 // Shown when no tabs are open.
 
 .background-message {
-  font-weight: bold;
-  color: @text-color-subtle;
+	color: @text-color-subtle;
+  font-weight: 200;
 }

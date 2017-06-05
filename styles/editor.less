@@ -6,22 +6,51 @@
 
 
 atom-text-editor[mini] {
-  padding-left: @component-padding/2;
-  color: @text-color;
-  border-radius: @component-border-radius;
-  background-color: @input-background-color;
+	background-color: @input-background-color;
+	border: 0;
+	border-radius: 0;
+	box-shadow: 0 0 0 1px @base-border-light-color;
+	color: @text-color;
+	font-family: @font-family;
+	font-size: 13px;
+	height: 21px;
+	line-height: 22px;
+  padding-left: @component-padding / 2;
 
-  &.is-focused {
-    background-color: darken(@input-background-color, 5%);
-  }
+	.cursor {
+		border: 0;
+		position: relative;
+		transition: opacity .1s;
 
-  &, // <-- Deprecated. The `&,` can be removed once the Shadow DOM can't be turned off in the settings.
-  &::shadow {
+		&::after {
+			background: black;
+			bottom: 3px;
+			content: '';
+			left: 0;
+			position: absolute;
+			top: 3px;
+			width: 1px;
+		}
+	}
+
+  &,
+  &.editor {
     .placeholder-text {
-      color: @text-color-subtle;
+      color: rgb(169, 169, 169);
     }
+
     .selection .region {
-      background-color: @background-color-selected;
+      background-color: transparent;
     }
+
+		&.is-focused .selection .region {
+			background-color: rgb(179, 216, 253);
+		}
   }
+}
+
+atom-text-editor {
+	.fold-marker {
+		cursor: pointer;
+	}
 }

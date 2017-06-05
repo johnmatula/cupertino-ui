@@ -1,37 +1,148 @@
-
 // Tabs
 // -------------------
 
 // Displays selectable tabs above the editor.
 // Overrides: atom/tabs
 
+// For an active window
 .tab-bar {
   background-color: @tab-bar-background-color;
-  border-bottom: 1px solid @base-border-color;
+//  border-bottom: 1px solid @base-light-border-color;
+	display: flex;
+	margin-right: -1px;
+	text-align: center;
+
+	&:empty {
+		display: none;
+	}
 
   .tab {
-    color: @text-color;
+    color: rgb(74,74,74);
     height: @tab-height;
     line-height: @tab-height;
-    font-size: @font-size;
+    font-size: 11.5px;
     border-right: 1px solid @tab-border-color;
-    background-color: @tab-background-color;
-    &.active {
-      color: @text-color-selected;
-      background-color: @tab-background-color-active;
-    }
+    background-image: linear-gradient(to bottom, rgb(187,187,187) 0%, rgb(178,178,178) 50%, rgb(170,170,170) 100%);
+		background-size: 100% 200%;
+		background-position: top center;
+		max-width: none;
+		padding: 0 10px;
+		transition: background-position .2s;
 
+		.close-icon, &.modified:not(:hover) .close-icon {
+			align-items: center;
+			background-color: rgb(174,174,174);
+			box-shadow: 0px 0 0px 3px rgb(174,174,174), 5px 0 2px 2px rgb(174,174,174);
+			border: 0;
+			color: rgb(33,33,33);
+			display: flex;
+			justify-content: center;
+			left: 0;
+			margin: -8px 0 0 5px;
+			opacity: 0;
+			position: absolute;
+			transition: opacity .2s;
+			text-align: center;
+			top: 50%;
+			right: auto;
+			padding: 0;
+			border-radius: 3px;
+			width: 16px;
+			height: 16px;
+			transition: opacity .2, background-color .2s;
+
+			&::before {
+				content: '\00d7';
+				color: rgb(33,33,33);
+				font-size: 22px;
+				font-family: @font-family;
+				font-weight: 200;
+				line-height: 14px;
+				padding: 0;
+				text-align: center;
+				width: 16px;
+				height: 16px;
+			}
+
+			&:hover {
+				background-color: rgb(150,150,150);
+				color: rgb(33,33,33);
+				opacity: 1;
+			}
+
+			&:active {
+				background-color: rgb(130,130,130);
+				color: rgb(33,33,33);
+			}
+		}
+
+		.icon::before {
+			opacity: .7;
+		}
+
+		&.modified .icon::before {
+			content: '\f052';
+			font-family: 'Octicons Regular';
+			width: 13px;
+			height: 13px;
+			font-size: 11px;
+			opacity: 1;
+		}
+
+		&.pending-tab {
+			.title {
+				font-style: normal;
+				opacity: .7;
+			}
+
+			.icon::before {
+				content: '\f04e';
+				font-family: 'Octicons Regular';
+				width: 13px;
+				height: 13px;
+				font-size: 13px;
+			}
+		}
+
+		&:hover {
+			background-position: bottom center;
+
+			.close-icon {
+				opacity: 1;
+			}
+		}
+
+    &.active {
+      color: rgb(40,40,40);
+			background-image: linear-gradient(to bottom, rgb(207,207,207) 0%, rgb(202,202,202) 100%);
+			background-size: 100% 100%;
+			flex: 1;
+			padding: 0 10px;
+			transition: background-position .2s;
+
+			.title {
+				padding: 0;
+			}
+
+			.close-icon, &.modified:not(:hover) .close-icon {
+				background-color: rgb(204,204,204);
+				box-shadow: 0px 0 0px 3px rgb(204,204,204), 5px 0 2px 2px rgb(204,204,204);
+
+				&:hover {
+					background-color: rgb(190,190,190);
+					color: rgb(33,33,33);
+				}
+
+				&:active {
+					background-color: rgb(150,150,150);
+					color: rgb(33,33,33);
+					transition: 0;
+				}
+			}
+    }
 
     // Modified Icon (the blue circle) -------------------
-    &.modified:not(:hover) .close-icon {
-      top: 50%;
-      right: @component-padding + 4px; // 4px -> half of icon size
-      margin-top: -3px;
-      border-color: @text-color-info;
-    }
-    &.modified:hover .close-icon {
-      color: currentColor;
-    }
+
 
 
     // Close Icon (the X) -------------------
@@ -54,4 +165,34 @@
       }
     }
   }
+}
+
+.tab-bar .tab.modified:not(:hover) .close-icon {
+	opacity: 0;
+}
+
+// For an inactive window
+.is-blurred .tab-bar {
+	background: rgb(232,232,232);
+
+	.tab {
+		background: rgb(232,232,232);
+		color: rgb(119,119,119);
+		transition: background .2s;
+		border-right: 1px solid @base-border-blurred-color;
+
+		&:hover {
+			background: rgb(224,224,224);
+		}
+
+		&.active {
+			background: rgb(246,246,246);
+			color: rgb(100,100,100);
+		}
+
+		// if granular click-through is ever supported, this could be removed
+		.close-icon {
+			display: none;
+		}
+	}
 }

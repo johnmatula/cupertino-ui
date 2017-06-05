@@ -1,0 +1,47 @@
+// Controls (inputs)
+// -------------------
+
+label {
+	font-weight: 400;
+}
+
+.input-text {
+	border-radius: 0;
+}
+
+.input-search {
+	border-radius: 0;
+}
+
+.input-radio {
+	-webkit-appearance: radio;
+
+	&::before {
+		display: none;
+	}
+}
+
+.input-checkbox {
+	-webkit-appearance: checkbox;
+
+	&::before, &::after {
+		display: none;
+	}
+}
+
+// bug?
+.input-toggle[checked] {
+}
+
+.input-textarea {
+	border-radius: 0;
+}
+
+.input-number {
+	font-feature-settings: 'tnum' on;
+}
+
+.input-color {
+	height: 25px;
+	width: 25px;
+}

@@ -6,18 +6,32 @@
 
 
 .tooltip {
+
+	&.in {
+		opacity: 1;
+	}
+
   .tooltip-inner {
-    line-height: 1;
-    padding: .75em;
+		background: rgb(240, 240, 240);
+		border-radius: 0;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 3px 16px -1px rgba(0, 0, 0, .25);
+		color: black;
+		font-size: .85em;
+		line-height: 1.5em;
+		margin: 0 0 5px 0;
+		max-width: none;
+		opacity: 1;
+    padding: .15em .5em;
     white-space: nowrap;
-    max-width: none;
   }
 
+	.tooltip-arrow {
+		display: none;
+	}
+
   .keystroke {
-    padding: .15em .4em;
-    margin: 0 -.3em 0 .25em;
-    border-radius: max(2px, @component-border-radius / 2);
-    color: @text-color-selected;
-    background: @background-color-selected;
+		border: 0;
+		color: @text-color-subtle;
+    margin-left: .75em;
   }
 }

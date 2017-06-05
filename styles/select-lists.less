@@ -1,0 +1,99 @@
+// select-lists
+
+.select-list {
+  li {
+    padding: @component-padding / 2 @component-padding;
+  }
+
+  .status {
+    float: right;
+  }
+}
+
+
+.overlay,
+atom-panel.modal {
+	padding: 0;
+}
+
+atom-panel.modal atom-text-editor[mini] {
+	margin-bottom: 0;
+}
+
+.modal {
+	.loading,
+	.error-message {
+		&:empty {
+			display: none;
+		}
+
+		//box-shadow: 0 -1px 0 0 @overlay-border-color;
+		color: @text-color-subtle;
+		display: block;
+		padding: @component-padding;
+	}
+
+	atom-text-editor[mini] {
+		background-color: @overlay-background-color;
+		border: 0;
+		color: #212121;
+		display: block;
+		font-family: @font-family;
+		font-size: 22px;
+		font-weight: 300;
+	  height: auto;
+	  line-height: 32px;
+		margin: 10px 0 0;
+		max-height: none;
+		padding: 0px @component-padding @component-padding;
+
+		& + span {
+			color: @text-color-subtle;
+			display: block;
+			padding: 10px;
+		}
+	}
+}
+
+.select-list,
+.go-to-line {
+	atom-text-editor[mini] {
+		box-shadow: 0 1px 0 0 @overlay-border-color;
+
+	}
+
+	.message {
+		margin: 0;
+		padding: 10px;
+	}
+
+	.secondary-line {
+		font-size: 0.9em;
+	}
+
+	ol.list-group {
+		margin-top: 0;
+	}
+
+	.list-group.mark-active {
+		li {
+			overflow: hidden;
+			padding-left: 2em;
+		}
+
+		li.active:not(.selected) {
+			padding-left: 0;
+		}
+
+		li.active,
+		li.selected.active {
+			&::before {
+				content: '\f03a';
+				display: inline-block;
+				font-family: 'Octicons Regular';
+				text-align: center;
+				width: 2em;
+			}
+		}
+	}
+}

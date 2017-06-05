@@ -6,15 +6,130 @@
 // Overrides: atom/tree-view
 
 
-.tree-view-resizer {
-  border-right: 1px solid @base-border-color;
+.list-tree :not([is='tree-view-directory']) .selected {
+	color: @text-color-selected;
+
+	& > .list-tree {
+		color: @text-color;
+	}
 }
 
-.tree-view {
-  color: @text-color;
-  background-color: @tree-view-background-color;
 
-  .list-item.selected {
-    color: @text-color-selected;
-  }
+.list-tree [is='tree-view-directory'] .selected {
+	color: @text-color;
+
+	&:focus {
+		color: @text-color-selected;
+	}
+
+	& > .list-tree {
+		color: @text-color;
+	}
+}
+
+
+
+.tree-view-resizer {
+  border: 0;
+}
+
+
+.tree-view {
+	background-color: @tree-view-background-color;
+  color: rgb(19, 19, 19);
+
+	.list-group .selected::before,
+	.list-tree .selected::before {
+		height: 26px;
+	}
+
+  &:focus {
+		.list-group .selected::before,
+		.list-tree .selected::before {
+			background-color: @background-color-selected;
+		}
+
+		.list-item.selected,
+		.selected > .list-item,
+		.list-item.selected ::after {
+	    color: @text-color-selected;
+	  }
+
+		.list-tree.has-collapsable-children .list-nested-item.selected > .list-item::before {
+			border-top: 7px solid currentColor;
+		}
+
+		.selected > .name.icon::before,
+		.list-nested-item.selected > .list-item > .name.icon::before {
+			opacity: 1;
+		}
+	}
+
+	.list-group .selected::before,
+	.list-tree .selected::before {
+		background-color: rgb(200, 200, 200);
+	}
+
+	.list-item.selected,
+	.list-item.selected ::after {
+		color: @text-color;
+	}
+
+	.list-tree.has-collapsable-children .list-nested-item > .list-item::before {
+		border-top: 7px solid rgba(33, 33, 33, .6);
+	}
+
+	.list-group li:not(.list-nested-item),
+	.list-tree li:not(.list-nested-item),
+	.list-group li.list-nested-item > .list-item,
+	.list-tree li.list-nested-item > .list-item {
+		line-height: 26px;
+	}
+
+	.header.list-item {
+		align-items: center;
+		display: flex;
+	}
+
+	.name {
+		align-items: center;
+		display: flex;
+		font-size: 13px;
+		padding-right: 32px;
+
+		&::after {
+			opacity: .35;
+		}
+
+		&.icon::before {
+			opacity: .6;
+		}
+	}
+
+	.is-blurred & {
+		background-color: @background-blurred-color;
+		color: rgb(25, 25, 25);
+	}
+}
+
+.list-tree.has-collapsable-children .list-nested-item > .list-item::before {
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 7px solid currentColor;
+	content: '';
+	height: 0px;
+	left: 0;
+	margin-right: 9px;
+	top: 0;
+	transition: transform .15s;
+	width: 0px;
+}
+
+.list-tree.has-collapsable-children .list-nested-item.collapsed > .list-item::before {
+	content: '';
+	height: 0;
+	left: 0;
+	top: 0;
+	transform: rotate(-90deg);
+	width: 0;
 }

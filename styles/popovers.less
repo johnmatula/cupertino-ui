@@ -1,0 +1,27 @@
+
+// popovers, like for autocomplete
+
+.popover-list {
+	border: 0;
+	border-radius: @component-border-radius;
+	background-color: @overlay-background-color;
+	box-shadow: @shadow-main-popover;
+	overflow: hidden;
+	padding: @component-padding 0;
+
+	.btn-group {
+		padding: 0 @component-padding;
+	}
+
+	.autocomplete-plus & {
+		padding: @component-padding;
+
+	  .list-group {
+	    margin-top: @component-padding;
+
+	    li {
+	      padding-left: @component-padding;
+	    }
+	  }
+	}
+}

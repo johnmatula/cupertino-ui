@@ -7,4 +7,28 @@
 
 .find-and-replace {
   border-top: 1px solid @base-border-color;
+
+	.is-blurred & {
+		border-color: @base-border-blurred-color;
+	}
+}
+
+.find-and-replace .find-meta-container {
+	line-height: 1.75em;
+}
+
+.search-result {
+
+	.selected .path-match-number {
+		color: @text-color-selected;
+	}
+
+	.line-number {
+		font-feature-settings: 'tnum' on;
+		width: 3em;
+
+		.results-view .selected & {
+			color: @text-color-subtle;
+		}
+	}
 }

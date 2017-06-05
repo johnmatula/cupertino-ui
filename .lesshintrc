@@ -1,0 +1,7 @@
+{
+	"maxCharPerLine": 999,
+	"spaceAfterPropertyColon": false,
+	"decimalZero": false,
+	"zeroUnit": false,
+	"qualifyingElement": false
+}

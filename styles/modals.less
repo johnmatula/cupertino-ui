@@ -1,0 +1,61 @@
+// Modals
+
+atom-panel.modal {
+  border: 0;
+	border-radius: 8px;
+	box-shadow: @shadow-main-modal;
+	overflow: hidden;
+
+	& > div:not(.select-list):not(.go-to-line) {
+		padding: @component-padding;
+	}
+}
+
+.overlay.from-top {
+	border-radius: 8px;
+	top: 15%;
+}
+
+atom-panel.modal .tree-view-dialog {
+	label {
+		margin: 0;
+		padding: 10px;
+	}
+
+	atom-text-editor[mini] {
+		box-shadow: 0 -1px 0 0 @overlay-border-color;
+		margin: 0 0 10px 0;
+		padding: 10px 10px 0px 10px;
+	}
+}
+
+/*
+.modal {
+	.loading {
+		display: block;
+		padding: 10px;
+		color: @text-color-subtle;
+		box-shadow: 0 1px 0 0 @overlay-border-color;
+	}
+
+	atom-text-editor[mini] {
+		border: 0;
+	  padding-left: 5px;
+	  color: #212121;
+		display: block;
+	  background-color: @overlay-background-color;
+	  height: auto;
+	  line-height: 32px;
+	  font-size: 22px;
+	  font-family: @font-family;
+		font-weight: 300;
+		max-height: none;
+
+		& + span {
+			display: block;
+			padding: 10px;
+			color: @text-color-subtle;
+		}
+	}
+}
+*/

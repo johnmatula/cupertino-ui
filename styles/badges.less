@@ -1,0 +1,22 @@
+// Badges
+
+.badge {
+	align-items: center;
+	background: none;
+	border-radius: 999px;
+	box-shadow: 0 0 0 1px @base-border-color;
+	color: @text-color;
+	display: inline-flex;
+	justify-content: center;
+	text-align: center;
+	vertical-align: middle;
+
+	&.badge-info, &.badge-success, &.badge-warning, &.badge-error {
+		box-shadow: none;
+	}
+
+	&.badge-flexible {
+		min-width: 1.75em;
+		vertical-align: baseline;
+	}
+}

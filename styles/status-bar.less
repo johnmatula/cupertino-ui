@@ -6,9 +6,180 @@
 // Displays information about the current editor.
 // Overrides: atom/status-bar
 
-.status-bar {
-  font-size: @font-size;
-  color: @text-color;
+status-bar {
+	background-color: @base-background-color;
   border-top: 1px solid @base-border-color;
-  background-color: @tree-view-background-color;
+	color: @text-color;
+	display: flex;
+	font-size: calc(@font-size - 2px);
+	height: 2.75em;
+
+	.flexbox-repaint-hack {
+		align-items: stretch;
+		bottom: 0;
+		display: flex;
+		justify-content: space-between;
+		left: 0;
+		padding: .5em .5em;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	a,
+	a.icon,
+	a:hover,
+	a.icon:hover {
+		color: unset;
+		cursor: default;
+		text-decoration: none;
+	}
+
+	.is-blurred & {
+		background: @background-blurred-color;
+		box-shadow: 0 -1px 0 0 @base-border-blurred-color;
+		color: @text-blurred-color;
+
+		a {
+			color: @text-blurred-color;
+		}
+	}
+
+	.status-bar-left,
+	.status-bar-right {
+		display: flex;
+		margin-top: -1px;
+	}
+
+	.inline-block,
+	.inline-block.icon {
+		align-items: center;
+		background: transparent;
+		border-radius: 4px;
+		display: flex;
+		height: 1.75em;
+		justify-content: center;
+		margin-right: .25em;
+		padding: 0 .75em;
+		text-decoration: none;
+
+		&:empty:not(busy-signal) {
+			display: none;
+		}
+
+		&.linter-status-count {
+			padding: 0;
+
+			a:first-child {
+				padding-left: .75em;
+			}
+
+			a:last-child {
+				padding-right: .75em;
+			}
+		}
+
+		&:hover {
+			background: @background-status-bar-hover;
+			color: @text-color-selected;
+			text-decoration: none;
+		}
+
+		&:active {
+			background: @background-status-bar-press;
+			color: @text-color-status-bar-press;
+		}
+	}
+
+	.inline-block .icon {
+		:hover &,
+		:active & {
+			color: unset;
+		}
+	}
+
+	.inline-block > .inline-block {
+		background: transparent;
+		color: unset;
+		margin: 0;
+		padding: 0;
+		pointer-events: none;
+	}
+
+	.text-info,
+	.text-success,
+	.text-warning,
+	.text-error {
+		color: unset;
+
+		&:hover,
+		&:active {
+			color: @text-color-selected;
+		}
+	}
+}
+
+status-bar-cursor,
+status-bar-selection {
+	font-feature-settings: 'tnum' on;
+}
+
+.github-StatusBarTileController,
+.github-StatusBarTileController span {
+	color: unset;
+	display: flex;
+
+	&:hover,
+	&:active {
+		color: unset;
+		text-decoration: none;
+	}
+}
+
+.github-branch[aria-describedby],
+.github-PushPull[aria-describedby] {
+	background: @background-status-bar-lit;
+	color: @text-color-status-bar-press;
+
+	.is-blurred & {
+		background: @background-status-bar-lit-blurred;
+		color: @text-color-status-bar-lit-blurred;
+	}
+}
+
+.github-StatusBarTileController > .inline-block {
+	color: unset;
+
+	&:hover, &:active {
+		color: unset;
+		text-decoration: none;
+	}
+}
+
+busy-signal {
+	&.idle,
+	&.busy {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		position: unset;
+		width: 2.25em;
+
+		&::before {
+			background: transparent;
+			box-shadow: 0 0 0 1px @text-color-subtle inset;
+			display: inline-block;
+			height: 5px;
+			left: unset;
+			margin-top: 0;
+			position: relative;
+			top: unset;
+			transition: box-shadow .15s, background .15s;
+			width: 5px;
+		}
+	}
+
+	&.busy::before {
+		background: @text-color-subtle;
+	}
 }

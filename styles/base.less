@@ -9,14 +9,78 @@
 
 
 body {
-  font-size: @font-size;
   color: @text-color;
   background-color: @app-background-color;
+	font-size: @font-size;
 }
 
 atom-pane {
-  border-right: 1px solid @base-border-color;
-  &:last-child {
-    border-right: none;
-  }
+	border: 0;
+  border-left: 1px solid @base-border-color;
+	border-top: 1px solid @base-border-color;
+
+	.is-blurred & {
+		border-left: 1px solid @base-border-blurred-color;
+		border-top: 1px solid @base-border-blurred-color;
+	}
+}
+
+atom-pane-container {
+	margin: -1px 0 0 -1px;
+}
+
+atom-panel-container {
+	&.top {
+		border-bottom: 1px solid @base-border-color;
+
+		.is-blurred & {
+			border-color: @base-border-blurred-color;
+		}
+	}
+
+	&.left {
+		border-right: 1px solid @base-border-color;
+
+		.is-blurred & {
+			border-color: @base-border-blurred-color
+		}
+
+		.atom-dock-resize-handle {
+			bottom: 0;
+			right: -6px;
+			top: 0;
+			width: 10px;
+		}
+	}
+
+	&.bottom {
+		border-top: 0px solid @base-border-color;
+
+		.atom-dock-resize-handle {
+			height: 10px;
+			left: 0;
+			right: 0;
+			top: -5px;
+		}
+	}
+
+	.atom-dock-resize-handle {
+		background: rgba(0, 255, 255, 0);
+		position: absolute;
+		z-index: 4;
+	}
+
+	&:empty {
+		display: none;
+	}
+}
+
+.atom-dock-inner.atom-dock-open {
+	.atom-dock-mask {
+		overflow: visible;
+	}
+}
+
+.pane-item {
+	background: @base-background-color;
 }

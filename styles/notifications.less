@@ -1,0 +1,73 @@
+// Notifications
+// -------------------
+
+atom-notifications {
+	font-size: 1em;
+	top: @tab-height;
+}
+
+atom-notification {
+	-webkit-animation: notification-slidein .675s ease-out;
+	-webkit-animation-fill-mode: both;
+	border-radius: @component-border-radius;
+	box-shadow: @shadow-main-popover;
+	margin-bottom: @component-padding;
+
+	&.error,
+	&.fatal,
+	&.warning,
+	&.info,
+	&.success {
+		.content {
+			background-color: @overlay-background-color;
+			color: @text-color;
+		}
+	}
+
+	.close-all.btn {
+		&.btn-error,
+		&.btn-fatal,
+		&.btn-success,
+		&.btn-warning {
+			border: 0px solid transparent;
+			color: @text-color;
+			cursor: default;
+		}
+	}
+
+	&.remove,
+	&.remove:hover {
+		-webkit-animation: notification-fade .12s linear, notification-shrink .24s .12s ease;
+		-webkit-animation-fill-mode: forwards;
+		transition: none;
+	}
+}
+
+
+@-webkit-keyframes notification-fade {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes notification-slidein {
+	0% {
+		opacity: 0;
+		transform: translateX(115%);
+	}
+
+	5% {
+		opacity: 0;
+		transform: translateX(115%);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0%);
+
+	}
+}

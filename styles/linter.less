@@ -1,0 +1,43 @@
+// Linter
+
+.tree-view {
+	linter-decoration {
+		background-image: none;
+
+		&::after {
+			background-color: transparent;
+			content: '';
+			display: inline-block;
+			height: 5px;
+			position: absolute;
+			right: 16px;
+			top: 50%;
+			transform: translateY(-2.5px) rotate(45deg);
+			width: 5px;
+		}
+
+		&.linter-error, &.linter-warning, &.linter-info {
+			background-image: none;
+		}
+
+		&.linter-error::after {
+			background-color: @background-color-error;
+		}
+
+		&.linter-warning::after {
+			background-color: @background-color-warning;
+		}
+
+		&.linter-info::after {
+			background-color: @background-color-info;
+		}
+	}
+}
+
+.linter {
+	font-feature-settings: 'tnum' on;
+}
+
+atom-text-editor atom-overlay:not(.autocomplete-plus) {
+	pointer-events: none;
+}

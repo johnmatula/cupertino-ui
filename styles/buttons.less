@@ -5,27 +5,77 @@
 // Overrides: atom/atom/static/buttons.less
 
 
+// Control shadowing: top, right, bottom, left
+//@control-border: 0 -1px 0 0px rgba(0, 0, 0, .1), 1px 0px 0 0px rgba(0, 0, 0, .1), 0 1px 0 0px rgba(0, 0, 0, .185), -1px 0px 0 0px rgba(0, 0, 0, .1);
+
+@control-border: 0 0px 0 1px rgba(0, 0, 0, .1), 1px 0px 0 0px rgba(0, 0, 0, 0), 0 1px 0 0px rgba(0, 0, 0, .125), -1px 0px 0 0px rgba(0, 0, 0, 0);
+
+/*@control-border-active: 0 -1px 0 0px rgb(43, 128, 250), 1px 0px 0 0px rgb(22, 87, 227), 0 1px 0 0px rgb(13, 70, 217), -1px 0px 0 0px rgb(22, 87, 227);*/
+
+@control-border-selected: 0 0 0 1px rgba(0, 0, 0, .5), 1px 0px 0 0px rgba(0, 0, 0, 0), 0 1px 0 0px rgba(0, 0, 0, .2), -1px 0px 0 0px rgba(0, 0, 0, 0);
+
+@control-border-disabled: 0 0px 0 1px rgba(0, 0, 0, .075), 1px 0px 0 0px rgba(0, 0, 0, 0.01), 0 1px 0 0px rgba(0, 0, 0, .07), -1px 0px 0 0px rgba(0, 0, 0, 0.01);
+
+
 .btn {
-  color: lighten(@text-color, 6%);
-  background-color: @button-background-color;
+	align-items: center;
+	background-color: @button-background-color;
+	background-image: linear-gradient(to bottom, rgb(252, 252, 252) 0%, rgb(241, 241, 241) 100%);
+	box-shadow: @control-border;
+	border: 0;
+  color: @text-color;
+	cursor: default;
+	display: inline-flex;
+	height: auto;
+	line-height: 1.25em;
+	padding: .25em .75em;
+	justify-content: center;
+
   &:hover,
   &:focus {
-    color: @text-color-highlight;
-    background-color: @button-background-color-hover;
+		background-color: @button-background-color-hover;
+		box-shadow: @control-border;
+		color: @text-color;
   }
+
   &:active {
-    color: fade(@text-color-selected, 66%);
-    background-color: darken(@button-background-color, 2%);
+		background-color: darken(@button-background-color, 2%);
+		background-image: linear-gradient(to bottom, rgb(229, 229, 229) 0%, rgb(219, 219, 219) 100%);
+    color: @text-color;
   }
+
   &.selected {
     color: @text-color-selected;
     background-color: @button-background-color-selected;
+		background-image: linear-gradient(to bottom, rgb(109, 109, 109) 0%, rgb(101, 101, 101) 100%);
+		box-shadow: @control-border-selected;
+		z-index: 5;
   }
+
+	&.selected:active {
+		background-image: linear-gradient(to bottom, rgb(88, 88, 88) 0%, rgb(81, 81, 81) 100%);
+	}
+
   &:focus,
   &:focus:active {
     outline: none;
   }
+
+	&[disabled],
+	&[disabled]:hover,
+	&[disabled]:focus,
+	&[disabled]:active,
+	&.disabled,
+	&.disabled:hover,
+	&.disabled:focus,
+	&.disabled:active {
+		background: rgba(255, 255, 255, .5);
+		box-shadow: @control-border-disabled;
+		color: rgb(128, 128, 128);
+		cursor: default;
+	}
 }
+
 
 
 // Colored buttons -----------------------
@@ -37,27 +87,34 @@
 .btn.btn-error   { .btn-color(@background-color-error); }
 
 .btn-color(@bg) {
-  color: @text-color-selected;
+  color: @text-color;
   background-color: @bg;
   &:hover,
   &:focus {
     background-color: lighten(@bg, 4%);
   }
   &:active {
+		color: @text-color;
     background-color: darken(@bg, 4%);
   }
-  &.selected {
-    background-color: lighten(@bg, 4%);
-  }
-  &.selected:focus,
-  &.selected:hover {
-    background-color: lighten(@bg, 8%);
-  }
+
+	&.selected, &.selected:active {
+		color: @text-color-selected;
+	}
 }
+
+
 
 
 // Button Group -----------------------
 
 .btn-group > .btn {
-  border-color: hsla(0,0%,0%,.2);;
+	border: 0;
+}
+
+.btn-group .btn + .btn,
+.btn-group .btn + .btn-group,
+.btn-group .btn-group + .btn,
+.btn-group .btn-group + .btn-group {
+	margin-left: 1px;
 }
