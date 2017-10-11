@@ -7,26 +7,30 @@ minimap-quick-settings {
 	}
 }
 
-/*
+.cupertino-ui-use-scroll-lines {
+	atom-text-editor atom-text-editor-minimap .minimap-visible-area, html atom-text-editor-minimap .minimap-visible-area {
+		display: none;
+	}
 
-<minimap-quick-settings style="top: 25px; left: 760.188px;">
-<div class="select-list popover-list minimap-quick-settings">
-<input type="text" class="hidden-input">
-<ol class="list-group mark-active">
-<li class="active selected">cursorline</li>
-<li>find-and-replace</li>
-<li class="active">linter</li>
-<li class="separator">
-</li>
-<li class="code-highlights active">code-highlights</li>
-<li class="absolute-mode">absolute-mode</li>
-<li class="adjust-absolute-mode-height">adjust-absolute-mode-height</li>
-</ol>
-<div class="btn-group">
-<button class="btn btn-default">On Left</button>
-<button class="btn btn-default selected">On Right</button>
-</div>
-</div>
-</minimap-quick-settings>
+	atom-text-editor-minimap {
+		pointer-events: none;
 
-*/
+
+		canvas {
+			height: auto !important;
+			image-rendering: pixelated;
+			max-height: 100%;
+			min-height: 100%;
+			right: 0;
+			min-width: 12px;
+			max-width: 12px;
+			transform: scale3d(1, 1, 1) !important;
+		}
+
+	}
+
+	atom-text-editor atom-text-editor-minimap:not([stand-alone]), html atom-text-editor-minimap:not([stand-alone]) {
+		flex: 0 0 12px;
+		width: 12px;
+	}
+}

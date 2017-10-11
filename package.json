@@ -2,11 +2,20 @@
   "name": "cupertino-ui",
   "theme": "ui",
   "version": "0.0.1",
-  "description": "A comprehensive native theme for macOS, as pixel-perfect as possible.",
+  "description": "A comprehensive theme unifying Atom with the rest of macOS.",
   "keywords": [
     "ui",
-    "theme"
+    "theme",
+		"macos",
+		"el capitan",
+		"unity",
+		"native",
+		"sierra",
+		"high sierra",
+		"macintosh",
+		"os x"
   ],
+	"main": "./lib/cupertino-ui",
   "repository": "https://github.com/johnmatula/cupertino-ui",
   "license": "MIT",
   "engines": {

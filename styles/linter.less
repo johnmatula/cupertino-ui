@@ -5,32 +5,47 @@
 		background-image: none;
 
 		&::after {
-			background-color: transparent;
+			background-image: url('atom://cupertino-ui/assets/linter-sprite.svg');
+			background-position-y: -40px;
 			content: '';
 			display: inline-block;
-			height: 5px;
+			height: 10px;
+			margin-top: -5px;
+			opacity: 1;
 			position: absolute;
 			right: 16px;
 			top: 50%;
-			transform: translateY(-2.5px) rotate(45deg);
-			width: 5px;
+			width: 10px;
 		}
 
-		&.linter-error, &.linter-warning, &.linter-info {
+		&.linter-error,
+		&.linter-warning,
+		&.linter-info {
 			background-image: none;
 		}
 
 		&.linter-error::after {
-			background-color: @background-color-error;
+			background-position-x: 0px;
 		}
 
 		&.linter-warning::after {
-			background-color: @background-color-warning;
+			background-position-x: -20px;
 		}
 
 		&.linter-info::after {
-			background-color: @background-color-info;
+			background-position-x: -40px;
 		}
+	}
+
+	.selected linter-decoration::after {
+		background-position-y: -40px;
+		filter: brightness(.8);
+	}
+
+	&:focus .selected linter-decoration::after {
+		background-position-y: -60px;
+		filter: brightness(1);
+		opacity: 1;
 	}
 }
 
@@ -38,6 +53,91 @@
 	font-feature-settings: 'tnum' on;
 }
 
+.sb-table.linter {
+	cursor: default;
+
+	.is-blurred & {
+		td,
+		th,
+		tr,
+		tbody {
+			border-color: @base-border-blurred-color;
+		}
+	}
+
+	tbody {
+		background: none;
+	}
+
+	tr td:nth-child(3) {
+		cursor: pointer;
+	}
+}
+
 atom-text-editor atom-overlay:not(.autocomplete-plus) {
-	pointer-events: none;
+	cursor: default;
+
+	.cupertino-ui-click-through-tooltips & {
+		pointer-events: none;
+	}
+}
+
+#linter-tooltip {
+	box-shadow: @shadow-tooltip;
+	font-family: @font-family;
+	margin-left: -10px;
+
+	linter-messages {
+	}
+
+	linter-message.error,
+	linter-message.warning,
+	linter-message.info {
+		align-items: top;
+		background-color: @background-tooltip;
+		border-left: 0;
+		display: flex;
+		font-size: .875em;
+		//padding-left: 10px;
+		position: relative;
+		z-index: 6;
+
+		&:last-child::before {
+			display: none;
+		}
+
+		&:first-child::before {
+			background-color: @background-tooltip;
+			border: 0;
+			box-shadow: -1px -1px 0 0 rgba(0, 0, 0, .1);
+			content: '';
+			display: block;
+			height: 7px;
+			left: 3px;
+			position: absolute;
+			top: -4px;
+			transform: rotate(45deg);
+			transform-origin: center center;
+			width: 7px;
+			z-index: 5;
+		}
+
+		span {
+			display: flex;
+
+			.badge {
+				margin-right: 5px;
+			}
+		}
+/*
+		&::after {
+			background: black;
+			bottom: 0;
+			content: '';
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 4px;
+		}*/
+	}
 }

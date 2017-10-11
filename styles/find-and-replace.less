@@ -5,16 +5,89 @@
 // Find and replace in the current buffer or across the entire project.
 // Overrides: atom/find-and-replace
 
-.find-and-replace {
+.find-and-replace,
+.project-find {
+	background: @base-background-color;
   border-top: 1px solid @base-border-color;
+	cursor: default;
+
+	.header {
+		align-items: center;
+		display: flex;
+	}
 
 	.is-blurred & {
+		background: @background-blurred-color;
 		border-color: @base-border-blurred-color;
+	}
+
+	.close-button {
+		border-radius: 8px;
+		cursor: default;
+		display: flex;
+		height: 16px;
+		line-height: 16px;
+		margin: 0;
+		margin-right: 1em;
+		width: 16px;
+
+		&:hover {
+			background-color: @background-status-bar-hover;
+			color: white;
+		}
+
+		&:active {
+			background-color: @background-status-bar-press;
+			color: white;
+		}
+
+		.icon {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+		}
+
+		.icon::before {
+			font-size: 12px;
+			height: 12px;
+			line-height: 12px;
+			width: 12px;
+		}
+	}
+
+	.description {
+		flex: 0 0 auto;
+	}
+
+	.options-label {
+		align-items: center;
+		display: flex;
+		flex: 0 1 100%;
+		justify-content: flex-end;
+
+		span:nth-child(1) {
+			display: none;
+		}
+
+		.options {
+			font-size: .875em;
+			padding-right: .5em;
+		}
+	}
+
+	.btn-group-options {
+		display: flex;
+		flex: 0 0 auto;
+		height: 1.75em;
+	}
+
+	.find-meta-container {
+		line-height: 1.75em;
 	}
 }
 
-.find-and-replace .find-meta-container {
-	line-height: 1.75em;
+.searched-count {
+	font-feature-settings: 'tnum' on;
 }
 
 .search-result {
@@ -30,5 +103,16 @@
 		.results-view .selected & {
 			color: @text-color-subtle;
 		}
+	}
+}
+
+// We can put optional editor things in here too
+.find-wrap-icon {
+	z-index: 4;
+
+	&::before {
+		font-size: 96px;
+		line-height: 110px;
+		opacity: .5;
 	}
 }

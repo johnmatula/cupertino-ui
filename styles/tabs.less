@@ -7,19 +7,30 @@
 // For an active window
 .tab-bar {
   background-color: @tab-bar-background-color;
-//  border-bottom: 1px solid @base-light-border-color;
+	border-bottom: 1px solid rgb(172, 172, 172);
+	border-radius: 0;
 	display: flex;
 	margin-right: -1px;
+	overflow: scroll;
 	text-align: center;
+
+	&::-webkit-scrollbar {
+		height: 0;
+		width: 0;
+	}
 
 	&:empty {
 		display: none;
 	}
 
   .tab {
-    color: rgb(74,74,74);
+		align-items: center;
+		display: flex;
+		justify-content: center;
+    color: rgb(74, 74, 74);
     height: @tab-height;
     line-height: @tab-height;
+		min-width: 70px;
     font-size: 11.5px;
     border-right: 1px solid @tab-border-color;
     background-image: linear-gradient(to bottom, rgb(187,187,187) 0%, rgb(178,178,178) 50%, rgb(170,170,170) 100%);
@@ -28,6 +39,45 @@
 		max-width: none;
 		padding: 0 10px;
 		transition: background-position .2s;
+
+		&.active {
+			color: rgb(40,40,40);
+			background-image: linear-gradient(to bottom, rgb(207,207,207) 0%, rgb(202,202,202) 100%);
+			background-size: 100% 100%;
+			border-right: 1px solid @tab-border-right-color;
+			flex: 1;
+			min-width: 120px;
+			padding: 0 10px;
+			position: relative;
+			transition: background-position .2s;
+			z-index: 1;
+
+			.title {
+				padding: 0;
+			}
+
+			.close-icon, &.modified:not(:hover) .close-icon {
+				background-color: rgb(204,204,204);
+				box-shadow: 0px 0 0px 3px rgb(204,204,204), 5px 0 2px 2px rgb(204,204,204);
+
+				&:hover {
+					background-color: rgb(190,190,190);
+					color: rgb(33,33,33);
+				}
+
+				&:active {
+					background-color: rgb(150,150,150);
+					color: rgb(33,33,33);
+					transition: 0;
+				}
+			}
+		}
+
+		.title {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
 
 		.close-icon, &.modified:not(:hover) .close-icon {
 			align-items: center;
@@ -77,13 +127,15 @@
 		}
 
 		.icon::before {
+			font-size: 13px;
 			opacity: .7;
+			width: 16px;
 		}
 
 		&.modified .icon::before {
 			content: '\f052';
 			font-family: 'Octicons Regular';
-			width: 13px;
+			width: 16px;
 			height: 13px;
 			font-size: 11px;
 			opacity: 1;
@@ -111,35 +163,6 @@
 				opacity: 1;
 			}
 		}
-
-    &.active {
-      color: rgb(40,40,40);
-			background-image: linear-gradient(to bottom, rgb(207,207,207) 0%, rgb(202,202,202) 100%);
-			background-size: 100% 100%;
-			flex: 1;
-			padding: 0 10px;
-			transition: background-position .2s;
-
-			.title {
-				padding: 0;
-			}
-
-			.close-icon, &.modified:not(:hover) .close-icon {
-				background-color: rgb(204,204,204);
-				box-shadow: 0px 0 0px 3px rgb(204,204,204), 5px 0 2px 2px rgb(204,204,204);
-
-				&:hover {
-					background-color: rgb(190,190,190);
-					color: rgb(33,33,33);
-				}
-
-				&:active {
-					background-color: rgb(150,150,150);
-					color: rgb(33,33,33);
-					transition: 0;
-				}
-			}
-    }
 
     // Modified Icon (the blue circle) -------------------
 
@@ -174,6 +197,7 @@
 // For an inactive window
 .is-blurred .tab-bar {
 	background: rgb(232,232,232);
+	border-bottom: 1px solid @base-border-light-color;
 
 	.tab {
 		background: rgb(232,232,232);
@@ -187,6 +211,7 @@
 
 		&.active {
 			background: rgb(246,246,246);
+			border-right: 1px solid @tab-border-right-blurred-color;
 			color: rgb(100,100,100);
 		}
 

@@ -7,12 +7,13 @@
 // Overrides: atom/status-bar
 
 status-bar {
-	background-color: @base-background-color;
+	background: linear-gradient(to bottom, rgb(229, 229, 229), rgb(207, 207, 207));
   border-top: 1px solid @base-border-color;
 	color: @text-color;
 	display: flex;
 	font-size: calc(@font-size - 2px);
 	height: 2.75em;
+	-webkit-app-region: drag;
 
 	.flexbox-repaint-hack {
 		align-items: stretch;
@@ -26,22 +27,99 @@ status-bar {
 		top: 0;
 	}
 
+	.status-bar-left > *,
+	.status-bar-right > * {
+		-webkit-app-region: no-drag;
+	}
+
 	a,
 	a.icon,
 	a:hover,
-	a.icon:hover {
+	a.icon:hover,
+	.about-release-notes {
 		color: unset;
 		cursor: default;
 		text-decoration: none;
+
+	}
+
+	.icon::before {
+		height: 14px;
+		line-height: 14px;
+		top: 0;
+		width: 14px;
+	}
+
+	.linter-status-count a + a {
+		padding-left: 6px;
+	}
+
+	.linter-status-count a {
+		align-items: center;
+		display: flex;
+		font-feature-settings: 'tnum' on;
+
+		.icon {
+			background-image: url('atom://cupertino-ui/assets/linter-sprite.svg');
+			background-position-y: 0;
+			background-repeat: no-repeat;
+			display: flex;
+			height: 10px;
+			margin-right: 3px;
+			width: 10px;
+
+			&::before {
+				display: none;
+			}
+		}
+
+		&.text-error,
+		&.text-warning,
+		&.text-info {
+			.icon {
+				background-position-y: -80px;
+			}
+		}
+
+		&:nth-child(1) .icon {
+			background-position-x: 0;
+		}
+
+		&:nth-child(2) .icon {
+			background-position-x: -20px;
+		}
+
+		&:nth-child(3) .icon {
+			background-position-x: -40px;
+		}
+	}
+
+	.linter-status-count:hover,
+	.linter-status-count:active {
+		.icon {
+			background-position-y: -20px;
+		}
+
+		.text-error,
+		.text-warning,
+		.text-info {
+			.icon {
+				background-position-y: -60px;
+			}
+		}
 	}
 
 	.is-blurred & {
 		background: @background-blurred-color;
-		box-shadow: 0 -1px 0 0 @base-border-blurred-color;
+		border-color: @base-border-blurred-color;
 		color: @text-blurred-color;
 
 		a {
 			color: @text-blurred-color;
+
+			.icon {
+				opacity: .6;
+			}
 		}
 	}
 
@@ -63,7 +141,7 @@ status-bar {
 		padding: 0 .75em;
 		text-decoration: none;
 
-		&:empty:not(busy-signal) {
+		&:empty:not(busy-signal):not(status-bar-launch-mode):not(.about-release-notes) {
 			display: none;
 		}
 
@@ -150,9 +228,29 @@ status-bar-selection {
 .github-StatusBarTileController > .inline-block {
 	color: unset;
 
-	&:hover, &:active {
+	&:hover,
+	&:active {
 		color: unset;
 		text-decoration: none;
+	}
+}
+
+status-bar .file-info {
+	padding-right: 10px;
+
+	.cupertino-ui-hide-file-path & {
+		display: none;
+	}
+}
+
+status-bar .file-info.buffer-modified {
+	padding-right: 0;
+
+	&::after {
+		content: '\2022';
+		display: inline-block;
+		padding-left: 2px;
+		width: 10px;
 	}
 }
 

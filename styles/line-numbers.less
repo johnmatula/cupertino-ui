@@ -1,0 +1,151 @@
+// Line numbers
+// only enabled if requested as it's nonstandard for inclusion
+
+.cupertino-ui-style-line-numbers {
+
+	.editor.is-focused .line-number.cursor-line-no-selection {
+		background: unset;
+	}
+
+	.gutter-container {
+		//outline: 1px solid red;
+		padding-left: 5px;
+	}
+
+	.gutter {
+		background: none;
+	}
+
+	.line-numbers {
+
+		> div {
+			align-items: stretch;
+			contain: none !important;
+			display: flex;
+			flex-direction: column;
+			overflow: visible !important;
+			//outline: 3px double orange;
+		}
+
+		> div > div {
+			align-items: center;
+			display: flex;
+			flex: 1 1 100%;
+			flex-direction: row;
+			justify-content: flex-end;
+			//outline: 1px dashed purple;
+		}
+	}
+
+	atom-text-editor.editor .line-number {
+		//background: url('atom://cupertino-ui/assets/test.svg');
+		font-family: @digits-font-family;
+		font-feature-settings: 'tnum' on;
+		font-size: .75em;
+		font-weight: 500;
+		line-height: auto;
+		margin: 0;
+		opacity: 1;
+	  padding: 0 0 0 2em;
+		position: relative;
+		white-space: nowrap;
+
+		&.folded {
+			color: inherit;
+			opacity: 0.75;
+		}
+	}
+
+	atom-text-editor.editor .line-number.cursor-line {
+	  opacity: 1;
+	}
+
+	atom-text-editor.editor [gutter-name='linter-ui-default'] {
+		margin: 0 0.15em;
+		min-width: 10px;
+		position: relative;
+		width: 10px;
+
+		.linter-row {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+		}
+
+		.linter-highlight {
+			background-image: url('atom://cupertino-ui/assets/linter-sprite.svg');
+			background-repeat: no-repeat;
+			height: 10px;
+			margin-top: -1px;
+			width: 10px;
+
+			&.linter-error {
+				background-position: 0 -40px;
+			}
+
+			&.linter-warning {
+				background-position: -20px -40px;
+			}
+
+			&.linter-info {
+				background-position: -40px -40px;
+			}
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+
+	atom-text-editor .gutter .line-number {
+
+		// Remove the git clusterjam that happens when folding a line
+		&.folded {
+			&.git-line-modified::before,
+			&.git-line-added::before,
+			&.git-line-removed::before {
+				display: none;
+			}
+		}
+
+		&.git-line-modified,
+		&.git-line-added {
+			border: 0;
+			position: relative;
+		}
+
+		&.git-line-modified::before,
+		&.git-line-added::before {
+			bottom: 0;
+			content: '';
+			position: absolute;
+			right: 0px;
+			top: 0;
+			width: 1px;
+		}
+
+		&.git-line-added::before {
+			background-color: @background-color-success;
+		}
+
+		&.git-line-modified::before {
+			background-color: @background-color-warning;
+		}
+
+		&.git-line-removed::before {
+			//background: @background-color-error;
+			border-bottom: 2px solid transparent;
+			border-left: 5px solid red;
+			border-right: 0px solid transparent;
+			border-top: 2px solid transparent;
+			bottom: -2px;
+			content: '';
+			height: 2px;
+			left: auto;
+			position: absolute;
+			right: 0;
+			width: 3px;
+			z-index: 4;
+		}
+	}
+}

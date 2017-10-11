@@ -1,6 +1,15 @@
 // Dock
 
 // dock toggles
+.atom-dock-mask {
+
+	background: none;
+
+	.is-blurred & {
+		background-color: @background-blurred-color;
+	}
+}
+
 .atom-dock-toggle-button {
 	color: @text-color-subtle;
 
@@ -10,10 +19,26 @@
 		width: 16px;
 	}
 
+	&.left {
+		right: -1px;
+	}
+
+	&.right {
+		left: -15px;
+	}
+
 	&.top,
 	&.bottom {
 		height: 16px;
 		width: 34px;
+	}
+
+	&.top {
+		bottom: -1px;
+	}
+
+	&.bottom {
+		top: -15px;
 	}
 
 	&.left,
@@ -21,12 +46,17 @@
 	&.right,
 	&.bottom {
 		.atom-dock-toggle-button-inner {
+			background-color: @base-background-color;
 			border: 0;
 			border-radius: 4px;
-			box-shadow: 0 0 0 1px @base-border-color;
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, .3);
 			height: 30px;
 			margin: 2px;
 			width: 30px;
+
+			.is-blurred & {
+				opacity: 0;
+			}
 		}
 	}
 }

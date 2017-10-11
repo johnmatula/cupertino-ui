@@ -1,4 +1,3 @@
-
 // Tree View
 // -------------------
 
@@ -34,19 +33,106 @@
 }
 
 
-.tree-view {
-	background-color: @tree-view-background-color;
+// Tree view components that depend on size option
+.list-group .selected::before,
+.list-tree .selected::before {
+	.cupertino-ui-sidebar-size-small & {
+		height: 22px;
+	}
+
+	.cupertino-ui-sidebar-size-medium & {
+		height: 25px;
+	}
+
+	.cupertino-ui-sidebar-size-large & {
+		height: 36px;
+	}
+}
+
+.list-group li:not(.list-nested-item),
+.list-tree li:not(.list-nested-item),
+.list-group li.list-nested-item > .list-item,
+.list-tree li.list-nested-item > .list-item {
+	.cupertino-ui-sidebar-size-small & {
+		line-height: 22px;
+	}
+
+	.cupertino-ui-sidebar-size-medium & {
+		line-height: 25px;
+	}
+
+	.cupertino-ui-sidebar-size-large & {
+		line-height: 36px;
+	}
+}
+
+.list-item .name {
+	.cupertino-ui-sidebar-size-small & {
+		font-size: 11.5px;
+
+		&::after {
+			top: 11px;
+		}
+	}
+
+	.cupertino-ui-sidebar-size-medium & {
+		font-size: 13px;
+
+		&::after {
+			top: 13px;
+		}
+	}
+
+	.cupertino-ui-sidebar-size-large & {
+		font-size: 13px;
+	}
+
+	&::after {
+		top: 18px;
+	}
+}
+
+.list-item .name.icon::before {
+	.cupertino-ui-sidebar-size-small & {
+		font-size: 13px;
+		margin-right: 6px;
+	}
+
+	.cupertino-ui-sidebar-size-medium & {
+		font-size: 14px;
+		margin-right: 7px;
+	}
+
+	.cupertino-ui-sidebar-size-large & {
+		align-self: center;
+		height: 24px;
+		font-size: 24px;
+		line-height: 24px;
+		margin-right: 10px;
+		width: 24px;
+	}
+}
+
+
+
+// General tree view component specs
+atom-pane .tree-view {
+
   color: rgb(19, 19, 19);
 
-	.list-group .selected::before,
-	.list-tree .selected::before {
-		height: 26px;
+	.cupertino-vibrancy.cupertino-ui-enable-vibrancy & {
+		background-color: transparent;
 	}
 
   &:focus {
 		.list-group .selected::before,
 		.list-tree .selected::before {
 			background-color: @background-color-selected;
+
+			.cupertino-vibrancy.cupertino-ui-enable-vibrancy & {
+				background-color: darken(saturate(@background-color-selected, 100%), 5%);
+				opacity: .7;
+			}
 		}
 
 		.list-item.selected,
@@ -67,7 +153,11 @@
 
 	.list-group .selected::before,
 	.list-tree .selected::before {
-		background-color: rgb(200, 200, 200);
+		background-color: rgba(0, 0, 0, .17);
+
+		.cupertino-vibrancy.cupertino-ui-enable-vibrancy & {
+			background-color: rgba(0, 0, 0, .14);
+		}
 	}
 
 	.list-item.selected,
@@ -79,22 +169,14 @@
 		border-top: 7px solid rgba(33, 33, 33, .6);
 	}
 
-	.list-group li:not(.list-nested-item),
-	.list-tree li:not(.list-nested-item),
-	.list-group li.list-nested-item > .list-item,
-	.list-tree li.list-nested-item > .list-item {
-		line-height: 26px;
-	}
-
 	.header.list-item {
 		align-items: center;
 		display: flex;
 	}
 
 	.name {
-		align-items: center;
+		align-items: baseline;
 		display: flex;
-		font-size: 13px;
 		padding-right: 32px;
 
 		&::after {

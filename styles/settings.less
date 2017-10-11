@@ -1,20 +1,31 @@
 // Settings
 
 .package-container {
-	.btn.settings:first-child:not(:last-child) {
+	.btn.settings,
+	.btn.settings:first-child,
+	.btn.settings:last-child {
 		border-radius: @component-border-radius;
 		margin-right: 5px;
 	}
 
-	.btn.uninstall-button:nth-child(n+1):not(:first-child):not(:last-child) {
-		border-bottom-left-radius: @component-border-radius;
-		border-top-left-radius: @component-border-radius;
+	.btn-group > .btn:not(:first-child):not(:last-child),
+	.btn-group > .btn:first-child:not(:last-child),
+	.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+		border-radius: @component-border-radius;
+		margin: 0 0 0 8px;
 	}
 
-	.btn.enablement:nth-child(n+2):not(:first-child):not(:last-child) {
-		border-bottom-right-radius: @component-border-radius;
-		border-top-right-radius: @component-border-radius;
+	.btn-group > .btn:last-child.status-indicator {
+		box-shadow: none;
+		display: inline-block;
+
+			margin-left: 8px;
+
 	}
+}
+
+.settings-view div > section.section.settings-panel {
+	border-top: 0;
 }
 
 .settings-view .package-card {
@@ -22,6 +33,21 @@
 }
 
 .config-menu {
+
+	.cupertino-ui-sidebar-size-small & {
+		font-size: 11.5px;
+		line-height: 11.5px;
+	}
+
+	.cupertino-ui-sidebar-size-medium & {
+		font-size: 13px;
+	}
+
+	.cupertino-ui-sidebar-size-large & {
+		font-size: 13px;
+	}
+
+
 	a {
 		cursor: default;
 	}
@@ -60,16 +86,6 @@
 	}
 }
 
-// Status indicator
-.btn.status-indicator {
-	box-shadow: none;
-	display: inline-block;
-
-	.btn + & {
-		margin-left: 10px;
-		margin-top: 6px;
-	}
-}
 
 .settings-view .package-card .meta-controls .status-indicator {
 	height: 10px;

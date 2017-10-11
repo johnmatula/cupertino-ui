@@ -3,5 +3,7 @@
 	"spaceAfterPropertyColon": false,
 	"decimalZero": false,
 	"zeroUnit": false,
-	"qualifyingElement": false
+	"qualifyingElement": false,
+	"urlFormat": false,
+	"trailingWhitespace": false
 }

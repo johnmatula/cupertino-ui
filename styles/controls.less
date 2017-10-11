@@ -29,16 +29,92 @@ label {
 	}
 }
 
-// bug?
-.input-toggle[checked] {
+.input-toggle {
+	background-color: white;
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, .22);
+	transition: all 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+
+	&:active {
+		background-color: rgb(240, 240, 240);
+		transition: none;
+
+		&::before {
+			opacity: 1;
+		}
+	}
+
+	&:checked {
+		background-color: rgb(59, 153, 252);
+		box-shadow: 0 0 0 1px rgba(44, 145, 252, 1);
+
+		&:active {
+			background-color: rgb(10, 127, 251);
+			box-shadow: 0 0 0 1px rgba(9, 114, 225, 1), 0 0 0 1px rgba(9, 114, 225, 1) inset;
+		}
+	}
+
+	&::before {
+		background-color: white;
+		border: 1px solid transparent;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .25);
+		opacity: 1;
+	}
 }
+
+.input-range {
+	background: rgba(0, 0, 0, .24);
+	border-radius: 1.5px;
+	height: 3px;
+
+	&::-webkit-slider-runnable-track {
+	}
+
+	&::-webkit-slider-thumb {
+		background-color: white;
+		box-shadow: @control-border;
+		height: 17px;
+		position: relative;
+		width: 17px;
+
+		&:active {
+			background-color: rgb(240,240,240);
+			transform: none;
+		}
+	}
+}
+
+
 
 .input-textarea {
 	border-radius: 0;
 }
 
-.input-number {
+.platform-darwin .input-number {
+	border-radius: 0;
 	font-feature-settings: 'tnum' on;
+
+	&::-webkit-inner-spin-button {
+		background-color: white;
+		border: 0;
+		border-radius: 0;
+		bottom: 3px;
+		box-shadow: @control-border;
+		color: rgb(60, 60, 60);
+		display: block;
+		outline: 0;
+		opacity: 1;
+		right: 3px;
+		top: 3px;
+		visibility: visible;
+		width: 15px;
+
+		&:active {
+			background-color: rgb(44, 145, 252);
+			box-shadow: @control-border-blue-active;
+			color: white;
+			transform: none;
+		}
+	}
 }
 
 .input-color {
